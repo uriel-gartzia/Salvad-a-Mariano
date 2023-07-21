@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salvad a Mariano</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body ondragstart="return false;" ondrop="return false;">
+    <!-- la línea de arriba previene que los elementos se puedan arrastrar -->
+
+    <!-- START SCREEN -->
+    <div id="start-screen" class="container">
+      <img src="./Images/def/Frame-2.png" alt="portada" id="pingüino" />
+      <h1>Salvar a Mariano</h1>
+      <button id="start-btn"><h3>START GAME!</h3></button>
+    </div>
+
+    <!-- GAME SCREEN -->
+    <div id="game-screen" class="container">
+      <div id="game-box">
+        <!-- <img src="Images/provisionales/main-screen.png" alt="principal"> -->
+      </div>
+    </div>
+
+    <!-- GAME OVER SCREEN -->
+    <div id="gameOver-screen" class="container">
+      <img src="./Images/provisionales/Game-over.png" alt="logo-perder" />
+      <button id="restart-btn">Play Again!</button>
+    </div>
+
+    <!-- GAME WIN SCREEN -->
+    <div id="gameWin-screen" class="container">
+      <img alt="logo-ganar" />
+      <button id="restart-btn">Play Again!</button>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/game.js"></script>
+  </body>
 </html>
