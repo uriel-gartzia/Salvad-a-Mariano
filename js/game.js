@@ -1,11 +1,11 @@
 class Game {
-    constructor() {
+  constructor() {
+    this.mariano = new Mariano();
+  }
 
-    }
-
-    gameLoop = () => {
+  gameLoop = () => {
     console.log("ejecutando gameLoop");
 
-    requestAnimationFrame(this.gameLoop)
-    }
+    requestAnimationFrame(this.gameLoop);
+  };
 }

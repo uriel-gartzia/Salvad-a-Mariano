@@ -2,6 +2,7 @@
 const startBtnNode = document.querySelector("#start-btn");
 const startScreenNode = document.querySelector("#start-screen");
 const gameScreenNode = document.querySelector("#game-screen");
+const gameBoxNode = document.querySelector("#game-box");
 
 // STATE MANAGEMENT FUNCTIONS
 function startGame() {
@@ -10,9 +11,9 @@ function startGame() {
   gameScreenNode.style.display = "flex";
 
   let gameObj = new Game();
-  console.log(gameObj)
+  console.log(gameObj.gameLoop());
 
-  gameObj.gameLoop()
+  // gameObj.gameLoop()
 }
 
 // ADD EVENT LISTENER
