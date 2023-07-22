@@ -79,7 +79,7 @@ h3 {
     relativa hacia la game-box*/
   user-select: none; /*esto evita el bug de selección*/
 
-  background-image: url("../Images/def/Background-image.png");
+  background-image: url("../Images/def/Background-image-3.png");
   background-position: center;
   background-size: cover;
 }
