@@ -9,8 +9,8 @@ class Mariano {
 
     this.x = 50;
     this.y = 50;
-    this.w = 100;
-    this.h = 40;
+    this.w = 130;
+    this.h = 60;
 
     this.gravitySpeed = 0.5;
 

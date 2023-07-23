@@ -1,11 +1,11 @@
-class Bolsa {
-  constructor() {
+class Bag {
+  constructor(posY) {
     this.node = document.createElement("img");
-    this.node.src = "./Images/def/bolsa.png";
+    this.node.src = "./Images/def/bag.png";
     gameBoxNode.append(this.node);
 
     this.x = gameBoxNode.offsetWidth;
-    this.y = 150;
+    this.y = posY;
     this.w = 80;
     this.h = 80;
 
@@ -17,7 +17,7 @@ class Bolsa {
   }
 
   autoMov = () => {
-    this.x -= 1;
+    this.x -= 1.5;
     this.positionUpdate();
   };
 

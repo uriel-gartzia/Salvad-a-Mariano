@@ -1,11 +1,11 @@
 class Bottle {
-    constructor() {
+    constructor(posY) {
         this.node = document.createElement("img");
         this.node.src = "./Images/def/bottle.png";
         gameBoxNode.append(this.node);
 
         this.x = gameBoxNode.offsetWidth;
-        this.y = 350;
+        this.y = posY;
         this.w = 60;
         this.h = 60;
     

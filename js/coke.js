@@ -1,11 +1,11 @@
 class Coke {
-  constructor() {
+  constructor(posY) {
     this.node = document.createElement("img");
     this.node.src = "./Images/def/coke.png";
     gameBoxNode.append(this.node);
 
     this.x = gameBoxNode.offsetWidth;
-    this.y = 0;
+    this.y = posY;
     this.w = 35;
     this.h = 35;
 

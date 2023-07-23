@@ -69,7 +69,7 @@ h3 {
   height: 600px;
 
   /* config por defecto para game box */
-  /* overflow: hidden; 
+  overflow: hidden; 
   /* esto oculta el elemento cuando sale de la game-box */
   position: relative; /*esto va a permitir que los elementos tengan una posición 
     relativa hacia la game-box*/
