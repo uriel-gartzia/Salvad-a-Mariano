@@ -3,6 +3,7 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
+
 h1 {
   font-family: Arial, Helvetica, sans-serif;
   color: white;
@@ -20,7 +21,6 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  /* font-size: 20px; */
   border-radius: 8px;
   border-style: solid;
   border-color: #292760;
@@ -39,11 +39,6 @@ h3 {
   font-weight: 400;
   margin: 0;
 }
-
-/* a:hover { 
-    border-color: white;
-    border-width: 2px;
-}  */
 
 #start-screen {
   background-image: url(../Images/def/Fondo-ondas.png);
@@ -74,7 +69,8 @@ h3 {
   height: 600px;
 
   /* config por defecto para game box */
-  overflow: hidden; /*esto oculta el elemento cuando sale de la game-box*/
+  /* overflow: hidden; 
+  /* esto oculta el elemento cuando sale de la game-box */
   position: relative; /*esto va a permitir que los elementos tengan una posición 
     relativa hacia la game-box*/
   user-select: none; /*esto evita el bug de selección*/

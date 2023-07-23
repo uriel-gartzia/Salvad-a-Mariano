@@ -25,12 +25,9 @@ function startGame() {
 startBtnNode.addEventListener("click", startGame);
 
 document.addEventListener("keydown", (event) => {
-  // console.log(event.key)
-  // console.log("presionando una tecla")
-
+  
   if (event.key === "ArrowRight") {
     gameObj.mariano.x += 20;
-    // console.log("patata")
   } else if (event.key === "ArrowLeft") {
     gameObj.mariano.x -= 20;
   }

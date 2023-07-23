@@ -12,6 +12,8 @@ class Mariano {
     this.w = 100;
     this.h = 40;
 
+    this.gravitySpeed = 0.5;
+
     this.node.style.width = `${this.w}px`;
     this.node.style.height = `${this.h}px`;
     this.node.style.position = "absolute";
@@ -21,15 +23,13 @@ class Mariano {
 
   gravityEffect = () => {
 
-    this.y += 0.5;
-    console.log(this.y)
-    // this.node.style.top = `${this.y}px`;
-    // this.positionUpdates()
-
+    this.y += this.gravitySpeed;
+    this.positionUpdates()
   }
 
   positionUpdates = () => {
     
+    // this.x = easelinear(0, 200, 300, 1)
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
   }
