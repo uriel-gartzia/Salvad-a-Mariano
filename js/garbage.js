@@ -1,18 +1,15 @@
-class Bag {
-  constructor(posY, randomNumber) {
-    if (randomNumber === 1) {
-      foto
-      velocidad
-    }
+class Gargabe {
+  constructor(posY, src, size, velocity) {
     this.node = document.createElement("img");
-    this.node.src = "./Images/def/bag.png";
-    gameBoxNode.append(this.node);
+    this.node.src = src;
+    this.w = size;
+    this.h = size;
+    this.velocity = velocity;
 
-    if .-...
+    gameBoxNode.append(this.node); // esto añade un elemento al DOM
+
     this.x = gameBoxNode.offsetWidth;
     this.y = posY;
-    this.w = 80;
-    this.h = 80;
 
     this.node.style.width = `${this.w}px`;
     this.node.style.height = `${this.h}px`;
@@ -22,10 +19,7 @@ class Bag {
   }
 
   autoMov = () => {
-    if (randomNumber === 1) {
-
-      this.x -= 1.5;
-    } 
+    this.x -= this.velocity;
     this.positionUpdate();
   };
 
