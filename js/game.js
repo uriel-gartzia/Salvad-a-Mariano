@@ -4,7 +4,12 @@ class Game {
     this.garbageArr = [];
 
     this.frames = 0;
+    this.isGameOn = true;
   }
+
+  // gameOver = () => {
+  //   this.isGameOn = false;
+  // }
 
   garbageSpawning = () => {
     if (this.garbageArr.length === 0 || this.frames % 60 === 0) {
@@ -51,28 +56,36 @@ class Game {
     }
   };
 
-  gravityStop = () => {
-    this.mariano.gravityEffect = true;
-
-    if (this.mariano.y === 550) {
-      gravityEffect = false;
-    }
-  }
+  collisionMarianoGarbage = () => {
+    this.garbageArr.forEach((eachGarbage) => {
+      if (
+        this.mariano.x < eachGarbage.x + eachGarbage.w &&
+        this.mariano.x + this.mariano.w > eachGarbage.x &&
+        this.mariano.y < eachGarbage.y + eachGarbage.h &&
+        this.mariano.y + this.mariano.h > eachGarbage.y
+      ) {
+        this.isGameOn = false;
+      }
+    });
+  };
 
   gameLoop = () => {
     this.frames++;
 
     this.mariano.gravityEffect();
-    this.mariano.gravityStop();
     this.mariano.positionUpdates();
 
     this.garbageSpawning();
     this.garbageArr.forEach((eachGarbage) => {
       eachGarbage.autoMov();
     });
-
     this.garbageDissappear();
 
-    requestAnimationFrame(this.gameLoop);
+    this.collisionMarianoGarbage();
+
+    if (this.isGameOn = true) {
+      requestAnimationFrame(this.gameLoop);
+    }
+    
   };
 }

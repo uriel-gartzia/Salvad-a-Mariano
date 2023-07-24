@@ -1,6 +1,6 @@
 class Mariano {
   constructor() {
-    // console.log("esto ocurre una vez cuando se crea un mariano");
+    
     this.node = document.createElement("img");
     this.node.src = "./Images/def/mariano.png";
     gameBoxNode.append(this.node);
@@ -17,11 +17,21 @@ class Mariano {
     this.node.style.position = "absolute";
     this.node.style.top = `${this.y}px`;
     this.node.style.left = `${this.x}px`;
+    
   }
 
   gravityEffect = () => {
     this.y += this.gravitySpeed;
     this.positionUpdates();
+
+    if (this.y === 525) {
+      this.gravitySpeed = 0;
+      // this.node.src = "./Images/provisionales/mariano-de-pie.png";
+      // this.w = 130;
+      // this.h = 50;
+      // this.node.style.width = `${this.w}px`;
+      // this.node.style.height = `${this.h}px`;
+    }
   };
 
   positionUpdates = () => {
