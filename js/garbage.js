@@ -1,4 +1,4 @@
-class Gargabe {
+class Garbage {
   constructor(posY, src, size, velocity) {
     this.node = document.createElement("img");
     this.node.src = src;

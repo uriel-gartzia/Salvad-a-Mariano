@@ -1,11 +1,16 @@
 // GLOBAL VARIABLES
 const startBtnNode = document.querySelector("#start-btn");
-const restartBtnNode = document.querySelector("#restart-btn");
+const loseRestartBtnNode = document.querySelector("#lose-restart-btn");
+const winRestartBtnNode = document.querySelector("#win-restart-btn")
+
 const startScreenNode = document.querySelector("#start-screen");
 const gameScreenNode = document.querySelector("#game-screen");
-const gameBoxNode = document.querySelector("#game-box");
 const gameOverScreenNode = document.querySelector("#gameOver-screen");
 const gameWinScreenNode = document.querySelector("#gameWin-screen");
+
+// const secs = document.querySelector("#timer");
+
+const gameBoxNode = document.querySelector("#game-box");
 
 let gameObj = null;
 
@@ -16,15 +21,32 @@ function startGame() {
   gameScreenNode.style.display = "flex";
 
   gameObj = new Game();
-  console.log(gameObj.gameLoop());
+  gameObj.gameLoop();
+}
+
+function loseRestartGame() {
+  console.log("iniciando el juego");
+  gameOverScreenNode.style.display = "none";
+  gameScreenNode.style.display = "flex";
+  
+ 
+  gameObj = new Game();
+  gameObj.gameLoop();
+}
+
+function winRestartGame() {
+  console.log("iniciando el juego");
+  gameWinScreenNode.style.display = "none";
+  gameScreenNode.style.display = "flex";
+
+  gameObj = new Game();
+  gameObj.gameLoop();
 }
 
 
 
 // ADD EVENT LISTENER
 startBtnNode.addEventListener("click", startGame);
-
-restartBtnNode.addEventListener("click", startGame);
 
 document.addEventListener("keydown", (event) => {
   
@@ -40,4 +62,12 @@ document.addEventListener("keydown", (event) => {
     gameObj.mariano.y -= 20;
   }
 })
+
+loseRestartBtnNode.addEventListener("click", loseRestartGame);
+
+winRestartBtnNode.addEventListener("click", winRestartGame);
+
+
+
+
 

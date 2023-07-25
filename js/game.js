@@ -5,21 +5,31 @@ class Game {
 
     this.frames = 0;
     this.isGameOn = true;
+
+    this.timer = setTimeout(() => {
+      this.gameWin();
+    }, 30000); 
+
+    this.timerCountDown();
+
   };
 
+ 
   gameWin = () => {
     gameBoxNode.innerHTML = "";
     this.isGameOn = false;
     gameScreenNode.style.display = "none";
     gameWinScreenNode.style.display = "flex";
-    
-  }
+    clearTimeout(this.timer);
+  };
 
   gameOver = () => {
     gameBoxNode.innerHTML = "";
     this.isGameOn = false;
     gameScreenNode.style.display = "none";
     gameOverScreenNode.style.display = "flex";
+    clearTimeout(this.timer);
+    clearInterval(this.timerCountDown());
   };
 
   garbageSpawning = () => {
@@ -49,7 +59,7 @@ class Game {
       ];
       let garbageProps = garbageTypesArr[randomNumber];
       this.garbageArr.push(
-        new Gargabe(
+        new Garbage(
           randomPositionY,
           garbageProps.src,
           garbageProps.size,
@@ -79,6 +89,20 @@ class Game {
       }
     });
   };
+
+  timerCountDown = () => {
+    let timeleft = 29;
+    let downloadTimer = setInterval(function() {
+      if (timeleft <= 0) {
+        clearInterval(downloadTimer);
+        document.getElementById("timer").innerHTML = "00:" + timeleft;
+      } else {
+        document.getElementById("timer").innerHTML = "00:" + timeleft;
+      }
+      timeleft -= 1;
+    }, 1000);
+  };
+   
 
   gameLoop = () => {
     this.frames++;
