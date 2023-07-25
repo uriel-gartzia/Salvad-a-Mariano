@@ -5,11 +5,22 @@ class Game {
 
     this.frames = 0;
     this.isGameOn = true;
+  };
+
+  gameWin = () => {
+    gameBoxNode.innerHTML = "";
+    this.isGameOn = false;
+    gameScreenNode.style.display = "none";
+    gameWinScreenNode.style.display = "flex";
+    
   }
 
-  // gameOver = () => {
-  //   this.isGameOn = false;
-  // }
+  gameOver = () => {
+    gameBoxNode.innerHTML = "";
+    this.isGameOn = false;
+    gameScreenNode.style.display = "none";
+    gameOverScreenNode.style.display = "flex";
+  };
 
   garbageSpawning = () => {
     if (this.garbageArr.length === 0 || this.frames % 60 === 0) {
@@ -64,7 +75,7 @@ class Game {
         this.mariano.y < eachGarbage.y + eachGarbage.h &&
         this.mariano.y + this.mariano.h > eachGarbage.y
       ) {
-        this.isGameOn = false;
+        this.gameOver()
       }
     });
   };
@@ -83,9 +94,10 @@ class Game {
 
     this.collisionMarianoGarbage();
 
-    if (this.isGameOn = true) {
+    if (this.isGameOn === true) {
       requestAnimationFrame(this.gameLoop);
+    } 
     }
     
   };
-}
+

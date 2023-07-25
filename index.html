@@ -11,7 +11,7 @@
 
     <!-- START SCREEN -->
     <div id="start-screen" class="container">
-      <img src="./Images/def/mariano-portada-2.png" alt="portada" id="pingüino" />
+      <img src="./Images/def/mariano-portada-2.png" alt="portada" class="pingüino" />
       <h1>Salvar a Mariano</h1>
       <button id="start-btn"><h3>START GAME!</h3></button>
     </div>
@@ -19,19 +19,21 @@
     <!-- GAME SCREEN -->
     <div id="game-screen" class="container">
       <div id="game-box">
-        <!-- <img src="./Images/provisionales/penguin-prov.png" width="100px" alt="Mariano"> -->
+        <p id="timer">00:30</p>
       </div>
     </div>
 
     <!-- GAME OVER SCREEN -->
     <div id="gameOver-screen" class="container">
-      <img src="./Images/provisionales/Game-over.png" alt="logo-perder" />
-      <button id="restart-btn">Play Again!</button>
+      <img src="./Images/def/portada-game-over.png" alt="logo-perder" class="pingüino" />
+      <h1>Game Over</h1>
+      <button id="restart-btn"><h3>PLAY AGAIN!</h3></button>
     </div>
 
     <!-- GAME WIN SCREEN -->
     <div id="gameWin-screen" class="container">
-      <img alt="logo-ganar" />
+      <img src="./Images/def/mariano-portada-2.png" alt="logo-ganar" />
+      <h1>Congratulations!</h1>
       <button id="restart-btn">Play Again!</button>
     </div>
 
@@ -39,5 +41,6 @@
     <script src="./js/game.js"></script>
     <script src="./js/Mariano.js"></script>
     <script src="./js/garbage.js"></script>
+    <script src="./js/count-down.js"></script>
   </body>
 </html>

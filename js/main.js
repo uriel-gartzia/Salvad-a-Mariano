@@ -1,10 +1,11 @@
 // GLOBAL VARIABLES
 const startBtnNode = document.querySelector("#start-btn");
+const restartBtnNode = document.querySelector("#restart-btn");
 const startScreenNode = document.querySelector("#start-screen");
 const gameScreenNode = document.querySelector("#game-screen");
 const gameBoxNode = document.querySelector("#game-box");
-
-
+const gameOverScreenNode = document.querySelector("#gameOver-screen");
+const gameWinScreenNode = document.querySelector("#gameWin-screen");
 
 let gameObj = null;
 
@@ -16,13 +17,14 @@ function startGame() {
 
   gameObj = new Game();
   console.log(gameObj.gameLoop());
-  // gameObj.gameLoop()
 }
 
 
 
 // ADD EVENT LISTENER
 startBtnNode.addEventListener("click", startGame);
+
+restartBtnNode.addEventListener("click", startGame);
 
 document.addEventListener("keydown", (event) => {
   
