@@ -2,6 +2,9 @@ class Game {
   constructor() {
     this.mariano = new Mariano();
     this.garbageArr = [];
+    this.life1 = new Life;
+    this.life2 = new Life;
+    this.life3 = new Life;
 
     this.frames = 0;
     this.isGameOn = true;
@@ -10,11 +13,14 @@ class Game {
       this.gameWin();
     }, 30000); 
 
+    this.downloadTimerID = null;
+
+    document.getElementById("timer").innerHTML = "00:30";
+
     this.timerCountDown();
 
   };
 
- 
   gameWin = () => {
     gameBoxNode.innerHTML = "";
     this.isGameOn = false;
@@ -29,7 +35,7 @@ class Game {
     gameScreenNode.style.display = "none";
     gameOverScreenNode.style.display = "flex";
     clearTimeout(this.timer);
-    clearInterval(this.timerCountDown());
+    clearInterval(this.downloadTimerID);
   };
 
   garbageSpawning = () => {
@@ -92,17 +98,24 @@ class Game {
 
   timerCountDown = () => {
     let timeleft = 29;
-    let downloadTimer = setInterval(function() {
+    this.downloadTimerID = setInterval(function() {
       if (timeleft <= 0) {
-        clearInterval(downloadTimer);
+        clearInterval(this.downloadTimerID);
         document.getElementById("timer").innerHTML = "00:" + timeleft;
+      } else if (timeleft < 10) {
+        document.getElementById("timer").innerHTML = "00:0" + timeleft;
       } else {
         document.getElementById("timer").innerHTML = "00:" + timeleft;
       }
       timeleft -= 1;
     }, 1000);
+
   };
-   
+
+  lifeLost = () => {
+    this.life2.x = 150;
+  };
+
 
   gameLoop = () => {
     this.frames++;

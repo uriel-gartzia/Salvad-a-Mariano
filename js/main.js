@@ -8,8 +8,6 @@ const gameScreenNode = document.querySelector("#game-screen");
 const gameOverScreenNode = document.querySelector("#gameOver-screen");
 const gameWinScreenNode = document.querySelector("#gameWin-screen");
 
-// const secs = document.querySelector("#timer");
-
 const gameBoxNode = document.querySelector("#game-box");
 
 let gameObj = null;
@@ -28,7 +26,6 @@ function loseRestartGame() {
   console.log("iniciando el juego");
   gameOverScreenNode.style.display = "none";
   gameScreenNode.style.display = "flex";
-  
  
   gameObj = new Game();
   gameObj.gameLoop();
