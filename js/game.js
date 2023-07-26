@@ -2,9 +2,11 @@ class Game {
   constructor() {
     this.mariano = new Mariano();
     this.garbageArr = [];
-    this.life1 = new Life;
-    this.life2 = new Life;
-    this.life3 = new Life;
+    this.life1 = new Life(50);
+    this.life2 = new Life(75);
+    this.life3 = new Life(100);
+
+    this.counter = 3;
 
     this.frames = 0;
     this.isGameOn = true;
@@ -41,10 +43,10 @@ class Game {
   garbageSpawning = () => {
     if (this.garbageArr.length === 0 || this.frames % 60 === 0) {
       let randomPositionY = Math.floor(Math.random() * 550);
-      console.log(randomPositionY);
+      // console.log(randomPositionY);
 
       let randomNumber = Math.floor(Math.random() * 3);
-      console.log(randomNumber);
+      // console.log(randomNumber);
 
       const garbageTypesArr = [
         {
@@ -73,7 +75,7 @@ class Game {
         )
       );
     }
-    console.log(this.garbageArr);
+    // console.log(this.garbageArr);
   };
 
   garbageDissappear = () => {
@@ -84,16 +86,25 @@ class Game {
   };
 
   collisionMarianoGarbage = () => {
-    this.garbageArr.forEach((eachGarbage) => {
+    if (this.counter === 0) {
+      this.gameOver();
+    } else if (this.counter <= 3) {
+      this.garbageArr.forEach((eachGarbage) => {
       if (
         this.mariano.x < eachGarbage.x + eachGarbage.w &&
         this.mariano.x + this.mariano.w > eachGarbage.x &&
         this.mariano.y < eachGarbage.y + eachGarbage.h &&
         this.mariano.y + this.mariano.h > eachGarbage.y
       ) {
-        this.gameOver()
+        this.counter--;
+       
+        eachGarbage.removeGarbage();
+        this.garbageArr.splice(4, 0);
+        console.log(this.garbageArr);
+        // this.gameOver();
       }
-    });
+    })
+    }
   };
 
   timerCountDown = () => {
@@ -111,11 +122,6 @@ class Game {
     }, 1000);
 
   };
-
-  lifeLost = () => {
-    this.life2.x = 150;
-  };
-
 
   gameLoop = () => {
     this.frames++;

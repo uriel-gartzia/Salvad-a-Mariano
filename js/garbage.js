@@ -26,4 +26,10 @@ class Garbage {
   positionUpdate = () => {
     this.node.style.left = `${this.x}px`;
   };
+
+  removeGarbage = () => {
+    this.node.remove();
+  }
+
+
 }
