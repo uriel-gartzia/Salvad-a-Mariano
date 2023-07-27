@@ -5,7 +5,7 @@ class Game {
     this.life1 = new Life(50);
     this.life2 = new Life(75);
     this.life3 = new Life(100);
-
+   
     this.counter = 3;
 
     this.frames = 0;
@@ -20,6 +20,9 @@ class Game {
     document.getElementById("timer").innerHTML = "00:30";
 
     this.timerCountDown();
+
+    // let mySound = new Audio("./audio/music/TODO TIEMPO PASADO FUE PEOR/02-Ikutzen-zaitudanean.wav")
+    // mySound.play()
 
   };
 
@@ -86,10 +89,8 @@ class Game {
   };
 
   collisionMarianoGarbage = () => {
-    if (this.counter === 0) {
-      this.gameOver();
-    } else if (this.counter <= 3) {
-      this.garbageArr.forEach((eachGarbage) => {
+    if (this.counter <= 3) {
+      this.garbageArr.forEach((eachGarbage, index) => {
       if (
         this.mariano.x < eachGarbage.x + eachGarbage.w &&
         this.mariano.x + this.mariano.w > eachGarbage.x &&
@@ -97,15 +98,30 @@ class Game {
         this.mariano.y + this.mariano.h > eachGarbage.y
       ) {
         this.counter--;
-       
+        // console.log(this.counter);
         eachGarbage.removeGarbage();
-        this.garbageArr.splice(4, 0);
-        console.log(this.garbageArr);
-        // this.gameOver();
+        this.garbageArr.splice(index, 1);
+        this.removeLifeConditional();
+        
       }
+    
+    else if (this.counter === 0) {
+      this.gameOver();
+    } 
     })
+
     }
   };
+
+  removeLifeConditional = () => {
+    if (this.counter === 2) {
+      this.life3.removeLife();
+    } else if (this.counter === 1) {
+      this.life2.removeLife();
+    } else if (this.counter === 0) {
+      this.life1.removeLife();
+    }
+  }
 
   timerCountDown = () => {
     let timeleft = 29;

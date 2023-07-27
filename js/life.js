@@ -16,4 +16,9 @@ class Life {
     this.node.style.top = `${this.y}px`;
     this.node.style.left = `${this.x}px`;
   }
+
+  removeLife = () => {
+    this.node.remove();
+  }
+
 }
