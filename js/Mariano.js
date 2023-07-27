@@ -35,7 +35,7 @@ class Mariano {
   };
 
   positionUpdates = () => {
-    // this.x = easelinear(0, 200, 300, 1)
+    
     this.node.style.left = `${this.x}px`;
     this.node.style.top = `${this.y}px`;
   };

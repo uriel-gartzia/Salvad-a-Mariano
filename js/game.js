@@ -2,6 +2,8 @@ class Game {
   constructor() {
     this.mariano = new Mariano();
     this.garbageArr = [];
+    // this.fishArr = [];
+
     this.life1 = new Life(50);
     this.life2 = new Life(75);
     this.life3 = new Life(100);
@@ -26,6 +28,7 @@ class Game {
     );
     this.mySound.play();
     this.mySound.volume = 0.1;
+    
   }
 
   gameWin = () => {
@@ -35,10 +38,10 @@ class Game {
     gameWinScreenNode.style.display = "flex";
     clearTimeout(this.timer);
 
+    this.mySound.pause();
     this.mySound2 = new Audio(
       "./audio/music/TODO TIEMPO PASADO FUE PEOR/03-Zeozer sabalean.wav"
     );
-    this.mySound.pause();
     this.mySound2.play();
     this.mySound2.volume = 0.1;
   };
@@ -51,17 +54,28 @@ class Game {
     clearTimeout(this.timer);
     clearInterval(this.downloadTimerID);
 
+    this.mySound.pause();
     this.mySound3 = new Audio(
       "./audio/music/TODO TIEMPO PASADO FUE PEOR/04-Esna nazazu.wav"
     );
     this.mySound3.play();
     this.mySound3.volume = 0.1;
-    this.mySound.pause();
-    this.mySound2.pause();
+    
+    
   };
 
+  // fishesSpawning = () => {
+  //   if (this.fishArr.length === 0 || this.frames % 45 === 0) {
+  //     this.randomNum = Math.floor(Math.random() * 3);
+  //     console.log(this.randomNum);
+  //     this.newFish = new Fish(this.randomNum, this.src, this.posY);
+  //     console.log(this.newFish);
+  //     this.fishArr.push(this.newFish);
+  //   }
+  // };
+
   garbageSpawning = () => {
-    if (this.garbageArr.length === 0 || this.frames % 60 === 0) {
+    if (this.garbageArr.length === 0 || this.frames % 45 === 0) {
       let randomPositionY = Math.floor(Math.random() * 550);
       // console.log(randomPositionY);
 
@@ -121,10 +135,9 @@ class Game {
 
           this.removeLifeConditional();
 
-          this.screamSound = new Audio("./audio/SFX/bird-scream.wav")
-          this.screamSound.play()
+          this.screamSound = new Audio("./audio/SFX/bird-scream.wav");
+          this.screamSound.play();
           this.screamSound.volume = 0.05;
-
         } else if (this.counter === 0) {
           this.gameOver();
         }
@@ -164,10 +177,17 @@ class Game {
     this.mariano.positionUpdates();
 
     this.garbageSpawning();
+
     this.garbageArr.forEach((eachGarbage) => {
       eachGarbage.autoMov();
     });
     this.garbageDissappear();
+
+    // this.fishesSpawning();
+
+    // this.fishArr.forEach((eachFish) => {
+    //   eachFish.autoMov();
+    // });
 
     this.collisionMarianoGarbage();
 
