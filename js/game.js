@@ -5,7 +5,7 @@ class Game {
     this.life1 = new Life(50);
     this.life2 = new Life(75);
     this.life3 = new Life(100);
-   
+
     this.counter = 3;
 
     this.frames = 0;
@@ -13,18 +13,20 @@ class Game {
 
     this.timer = setTimeout(() => {
       this.gameWin();
-    }, 30000); 
+    }, 60000);
 
     this.downloadTimerID = null;
 
-    document.getElementById("timer").innerHTML = "00:30";
+    document.getElementById("timer").innerHTML = "01:00";
 
     this.timerCountDown();
 
-    // let mySound = new Audio("./audio/music/TODO TIEMPO PASADO FUE PEOR/02-Ikutzen-zaitudanean.wav")
-    // mySound.play()
-
-  };
+    this.mySound = new Audio(
+      "./audio/music/TODO TIEMPO PASADO FUE PEOR/02-Ikutzen-zaitudanean-2.wav"
+    );
+    this.mySound.play();
+    this.mySound.volume = 0.1;
+  }
 
   gameWin = () => {
     gameBoxNode.innerHTML = "";
@@ -32,6 +34,13 @@ class Game {
     gameScreenNode.style.display = "none";
     gameWinScreenNode.style.display = "flex";
     clearTimeout(this.timer);
+
+    this.mySound2 = new Audio(
+      "./audio/music/TODO TIEMPO PASADO FUE PEOR/03-Zeozer sabalean.wav"
+    );
+    this.mySound.pause();
+    this.mySound2.play();
+    this.mySound2.volume = 0.1;
   };
 
   gameOver = () => {
@@ -41,6 +50,14 @@ class Game {
     gameOverScreenNode.style.display = "flex";
     clearTimeout(this.timer);
     clearInterval(this.downloadTimerID);
+
+    this.mySound3 = new Audio(
+      "./audio/music/TODO TIEMPO PASADO FUE PEOR/04-Esna nazazu.wav"
+    );
+    this.mySound3.play();
+    this.mySound3.volume = 0.1;
+    this.mySound.pause();
+    this.mySound2.pause();
   };
 
   garbageSpawning = () => {
@@ -91,25 +108,27 @@ class Game {
   collisionMarianoGarbage = () => {
     if (this.counter <= 3) {
       this.garbageArr.forEach((eachGarbage, index) => {
-      if (
-        this.mariano.x < eachGarbage.x + eachGarbage.w &&
-        this.mariano.x + this.mariano.w > eachGarbage.x &&
-        this.mariano.y < eachGarbage.y + eachGarbage.h &&
-        this.mariano.y + this.mariano.h > eachGarbage.y
-      ) {
-        this.counter--;
-        // console.log(this.counter);
-        eachGarbage.removeGarbage();
-        this.garbageArr.splice(index, 1);
-        this.removeLifeConditional();
-        
-      }
-    
-    else if (this.counter === 0) {
-      this.gameOver();
-    } 
-    })
+        if (
+          this.mariano.x < eachGarbage.x + eachGarbage.w &&
+          this.mariano.x + this.mariano.w > eachGarbage.x &&
+          this.mariano.y < eachGarbage.y + eachGarbage.h &&
+          this.mariano.y + this.mariano.h > eachGarbage.y
+        ) {
+          this.counter--;
+          // console.log(this.counter);
+          eachGarbage.removeGarbage();
+          this.garbageArr.splice(index, 1);
 
+          this.removeLifeConditional();
+
+          this.screamSound = new Audio("./audio/SFX/bird-scream.wav")
+          this.screamSound.play()
+          this.screamSound.volume = 0.05;
+
+        } else if (this.counter === 0) {
+          this.gameOver();
+        }
+      });
     }
   };
 
@@ -121,11 +140,11 @@ class Game {
     } else if (this.counter === 0) {
       this.life1.removeLife();
     }
-  }
+  };
 
   timerCountDown = () => {
-    let timeleft = 29;
-    this.downloadTimerID = setInterval(function() {
+    let timeleft = 59;
+    this.downloadTimerID = setInterval(function () {
       if (timeleft <= 0) {
         clearInterval(this.downloadTimerID);
         document.getElementById("timer").innerHTML = "00:" + timeleft;
@@ -136,7 +155,6 @@ class Game {
       }
       timeleft -= 1;
     }, 1000);
-
   };
 
   gameLoop = () => {
@@ -155,8 +173,6 @@ class Game {
 
     if (this.isGameOn === true) {
       requestAnimationFrame(this.gameLoop);
-    } 
     }
-    
   };
-
+}
