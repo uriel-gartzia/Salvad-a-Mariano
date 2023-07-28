@@ -29,6 +29,8 @@ function loseRestartGame() {
  
   gameObj = new Game();
   gameObj.gameLoop();
+
+  gameObj.mySound3.pause();
 }
 
 function winRestartGame() {
@@ -38,6 +40,8 @@ function winRestartGame() {
 
   gameObj = new Game();
   gameObj.gameLoop();
+
+  gameObj.mySound2.pause();
 }
 
 
@@ -55,16 +59,22 @@ document.addEventListener("keydown", (event) => {
     this.moveSound.volume = 0.05;
   } else if (event.key === "ArrowLeft") {
     gameObj.mariano.x -= 20;
+    this.moveSound = new Audio(
+      "./audio/SFX/bubbles.wav");
     this.moveSound.play();
     this.moveSound.volume = 0.05;
   }
 
   if (event.key === "ArrowDown") {
     gameObj.mariano.y += 20; 
+    this.moveSound = new Audio(
+      "./audio/SFX/bubbles.wav");
     this.moveSound.play();
     this.moveSound.volume = 0.05;
   } else if (event.key === "ArrowUp") {
     gameObj.mariano.y -= 20;
+    this.moveSound = new Audio(
+      "./audio/SFX/bubbles.wav");
     this.moveSound.play();
     this.moveSound.volume = 0.05;
   }

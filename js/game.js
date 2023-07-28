@@ -26,9 +26,18 @@ class Game {
     this.mySound = new Audio(
       "./audio/music/TODO TIEMPO PASADO FUE PEOR/02-Ikutzen-zaitudanean-2.wav"
     );
-    this.mySound.play();
-    this.mySound.volume = 0.1;
     
+    this.mySound.volume = 0.1;
+
+    this.mySound2 = new Audio(
+      "./audio/music/TODO TIEMPO PASADO FUE PEOR/03-Zeozer sabalean.wav"
+    );
+    this.mySound2.volume = 0.1;
+
+    this.mySound3 = new Audio(
+      "./audio/music/TODO TIEMPO PASADO FUE PEOR/04-Esna nazazu.wav"
+    );
+    this.mySound3.volume = 0.1;
   }
 
   gameWin = () => {
@@ -39,11 +48,8 @@ class Game {
     clearTimeout(this.timer);
 
     this.mySound.pause();
-    this.mySound2 = new Audio(
-      "./audio/music/TODO TIEMPO PASADO FUE PEOR/03-Zeozer sabalean.wav"
-    );
     this.mySound2.play();
-    this.mySound2.volume = 0.1;
+
   };
 
   gameOver = () => {
@@ -55,13 +61,8 @@ class Game {
     clearInterval(this.downloadTimerID);
 
     this.mySound.pause();
-    this.mySound3 = new Audio(
-      "./audio/music/TODO TIEMPO PASADO FUE PEOR/04-Esna nazazu.wav"
-    );
     this.mySound3.play();
-    this.mySound3.volume = 0.1;
-    
-    
+
   };
 
   // fishesSpawning = () => {
@@ -182,6 +183,15 @@ class Game {
       eachGarbage.autoMov();
     });
     this.garbageDissappear();
+
+    
+    this.mySound.play();
+    if (this.isGameOn) {
+      this.mySound2.pause()
+      this.mySound3.pause()
+    } else {
+      this.mySound.pause()
+    }
 
     // this.fishesSpawning();
 
