@@ -23,21 +23,21 @@ class Game {
 
     this.timerCountDown();
 
-    this.mySound = new Audio(
+    this.mainMusic = new Audio(
       "./audio/music/TODO TIEMPO PASADO FUE PEOR/02-Ikutzen-zaitudanean-2.wav"
     );
     
-    this.mySound.volume = 0.1;
+    this.mainMusic.volume = 0.1;
 
-    this.mySound2 = new Audio(
+    this.winMusic = new Audio(
       "./audio/music/TODO TIEMPO PASADO FUE PEOR/03-Zeozer sabalean.wav"
     );
-    this.mySound2.volume = 0.1;
+    this.winMusic.volume = 0.1;
 
-    this.mySound3 = new Audio(
+    this.loseMusic = new Audio(
       "./audio/music/TODO TIEMPO PASADO FUE PEOR/04-Esna nazazu.wav"
     );
-    this.mySound3.volume = 0.1;
+    this.loseMusic.volume = 0.1;
   }
 
   gameWin = () => {
@@ -46,9 +46,10 @@ class Game {
     gameScreenNode.style.display = "none";
     gameWinScreenNode.style.display = "flex";
     clearTimeout(this.timer);
+    clearInterval(this.downloadTimerID);
 
-    this.mySound.pause();
-    this.mySound2.play();
+    this.mainMusic.pause();
+    this.winMusic.play();
 
   };
 
@@ -60,8 +61,8 @@ class Game {
     clearTimeout(this.timer);
     clearInterval(this.downloadTimerID);
 
-    this.mySound.pause();
-    this.mySound3.play();
+    this.mainMusic.pause();
+    this.loseMusic.play();
 
   };
 
@@ -85,17 +86,17 @@ class Game {
 
       const garbageTypesArr = [
         {
-          src: "./Images/def/coke.png",
+          src: "./Images/def/coke.svg",
           size: 35,
           velocity: 2,
         },
         {
-          src: "./Images/def/bag.png",
+          src: "./Images/def/bag.svg",
           size: 80,
           velocity: 1.5,
         },
         {
-          src: "./Images/def/bottle.png",
+          src: "./Images/def/bottle.svg",
           size: 60,
           velocity: 2.5,
         },
@@ -185,12 +186,12 @@ class Game {
     this.garbageDissappear();
 
     
-    this.mySound.play();
+    this.mainMusic.play();
     if (this.isGameOn) {
-      this.mySound2.pause()
-      this.mySound3.pause()
+      this.winMusic.pause()
+      this.loseMusic.pause()
     } else {
-      this.mySound.pause()
+      this.mainMusic.pause()
     }
 
     // this.fishesSpawning();

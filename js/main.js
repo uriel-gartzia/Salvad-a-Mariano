@@ -26,22 +26,22 @@ function loseRestartGame() {
   console.log("iniciando el juego");
   gameOverScreenNode.style.display = "none";
   gameScreenNode.style.display = "flex";
- 
+  gameObj.loseMusic.pause();
   gameObj = new Game();
   gameObj.gameLoop();
 
-  gameObj.mySound3.pause();
+  
 }
 
 function winRestartGame() {
   console.log("iniciando el juego");
   gameWinScreenNode.style.display = "none";
   gameScreenNode.style.display = "flex";
-
+  gameObj.winMusic.pause();
   gameObj = new Game();
   gameObj.gameLoop();
 
-  gameObj.mySound2.pause();
+  
 }
 
 

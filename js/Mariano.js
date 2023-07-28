@@ -2,7 +2,7 @@ class Mariano {
   constructor() {
     
     this.node = document.createElement("img");
-    this.node.src = "./Images/def/mariano.png";
+    this.node.src = "./Images/def/mariano.svg";
     gameBoxNode.append(this.node);
 
     this.x = 50;
